@@ -1,3 +1,4 @@
+import ElementFactory from "./Factory/ElementFactory";
 import Route from "./Route";
 
 export default class EventRouter
@@ -9,6 +10,17 @@ export default class EventRouter
     public constructor(elementFactory: ElementFactory)
     {
         this.elementFactory = elementFactory;
+    }
+
+    public addRouteFromObject(routes: Array<any>)
+    {
+        routes.forEach((routeItem) => {
+            let handler = new (<any>window)["AlertHandler"]();
+            console.log(handler);
+
+            let route = new Route(routeItem.elem, routeItem.event, routeItem.handler);
+            this.addRoute(route);
+        });
     }
 
     public addRoute(route: Route): void

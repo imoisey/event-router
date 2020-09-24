@@ -1,3 +1,5 @@
+import Handler from "./Handlers/Handler";
+
 export default class Route
 {
     public elem: string;
